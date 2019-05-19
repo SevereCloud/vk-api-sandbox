@@ -10,7 +10,13 @@
 
 ### Insomnia
 
-После импорта json файла, в настройках varibatle задайте `access_token`
+После импорта json файла, в настройках Environment задайте `access_token`
+
+```json
+{
+    "access_token": "TOKEN HERE"
+}
+```
 
 ![](https://pp.userapi.com/c851028/v851028188/11fa4e/XrhnPN1ybRQ.jpg)
 
