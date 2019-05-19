@@ -1,9 +1,8 @@
 """vk-api-schema to sanbox app."""
-import json
 import os
 import shutil
 
-import urllib3
+import requests
 
 import insomnia
 import postman
@@ -16,21 +15,14 @@ TAGS_SCHEMA_URL = "https://api.github.com/repos/VKCOM/vk-api-schema/tags"
 
 def getVersion():
     """Return last version."""
-    user_agent = {'user-agent': 'urllib3'}
-    http = urllib3.PoolManager(headers=user_agent)
-    r = http.request('GET', TAGS_SCHEMA_URL, preload_content=False)
-
-    tags = json.loads(r.data.decode('utf-8'))
+    tags = requests.get(TAGS_SCHEMA_URL).json()
     last_tag_name = tags[0]["name"].split(".")
     return last_tag_name[0] + "." + last_tag_name[1]
 
 
 def downloadSchema():
     """Return object schema."""
-    http = urllib3.PoolManager()
-    r = http.request('GET', JSON_SCHEMA_URL, preload_content=False)
-
-    return json.loads(r.data.decode('utf-8'))
+    return requests.get(JSON_SCHEMA_URL).json()
 
 
 if __name__ == "__main__":
