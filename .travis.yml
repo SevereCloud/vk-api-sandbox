@@ -1,0 +1,16 @@
+language: python
+python: "3.7"
+
+script:
+  - python main.py
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file:
+    - "build/postman-vk-api-sandbox.json"
+    - "build/insomnia-vk-api-sandbox.json"
+    - "build/restclient-vk-api-sandbox.zip"
+  skip_cleanup: true
+  on:
+    tags: true
