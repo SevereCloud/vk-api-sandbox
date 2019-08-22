@@ -17,7 +17,9 @@ def getVersion():
     """Return last version."""
     tags = requests.get(TAGS_SCHEMA_URL).json()
     last_tag_name = tags[0]["name"].split(".")
-    return last_tag_name[0] + "." + last_tag_name[1]
+    major = ''.join(filter(lambda x: x.isdigit(), last_tag_name[0]))
+    minor = ''.join(filter(lambda x: x.isdigit(), last_tag_name[1]))
+    return major + "." + minor
 
 
 def downloadSchema():
