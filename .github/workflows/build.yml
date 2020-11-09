@@ -34,8 +34,11 @@ jobs:
         body:
         draft: false
         prerelease: false
-    - uses: AButler/upload-release-assets@v2.0
+    - name: Upload files
+      uses: svenstaro/upload-release-action@v2
       with:
-        files: 'build/*'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        release-tag: ${{ github.ref }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: build/*
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
