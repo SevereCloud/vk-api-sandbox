@@ -38,3 +38,4 @@ jobs:
       with:
         files: 'build/*'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release-tag: ${{ github.ref }}
