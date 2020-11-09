@@ -23,6 +23,17 @@ jobs:
     - name: Build
       run: |
         python main.py
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        body:
+        draft: false
+        prerelease: false
     - uses: AButler/upload-release-assets@v2.0
       with:
         files: 'build/*'
