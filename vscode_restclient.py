@@ -50,3 +50,4 @@ def handler(schema, build_folder, version):
         f"{build_folder}/restclient-vk-api-sandbox",
         "zip",
         folder_path)
+    shutil.rmtree(folder_path, ignore_errors=True)
